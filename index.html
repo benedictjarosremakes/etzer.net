@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etzer - Top Service vom Fachmann</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+:root {
+  /* Colors */
+  --color-bg: #F8F9FA;
+  --color-surface: #FFFFFF;
+  --color-text: #1A202C;
+  --color-text-muted: #4A5568;
+  --color-accent: #0056B3;
+  --color-accent-hover: #004494;
+  --color-highlight: #E53E3E;
+  --color-highlight-hover: #C53030;
+  --color-footer-bg: #111827;
+  --color-border: #E2E8F0;
+
+  /* Typography */
+  --font-sans: 'Inter', sans-serif;
+  --text-xs: clamp(0.75rem, 1.5vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 1.8vw, 1rem);
+  --text-base: clamp(1rem, 2vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 2.5vw, 1.375rem);
+  --text-xl: clamp(1.25rem, 3vw, 1.75rem);
+  --text-2xl: clamp(1.5rem, 4vw, 2.25rem);
+  --text-3xl: clamp(1.75rem, 5vw, 3rem);
+  --text-4xl: clamp(2.25rem, 7vw, 4.5rem);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --section-padding: clamp(4rem, 10vw, 8rem);
+
+  /* Z-Index */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 500;
+  --z-modal: 1000;
+  --z-toast: 2000;
+  --z-max: 9000;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  overflow-wrap: break-word;
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-xl); }
+
+p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent);
+  color: white;
+  padding: 8px;
+  z-index: var(--z-max);
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+[data-lucide] {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.icon-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: var(--text-base);
+  font-weight: 700;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: var(--z-raised);
+  text-align: center;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: white;
+}
+.btn--primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.btn--emergency {
+  background-color: var(--color-highlight);
+  color: white;
+}
+.btn--emergency:hover {
+  background-color: var(--color-highlight-hover);
+  transform: translateY(-2px);
+}
+
+.btn--outline {
+  border: 2px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+}
+.btn--outline:hover {
+  border-color: var(--color-text);
+}
+
+/* Header & Navigation */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.tagline {
+  display: none;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-left: 1px solid var(--color-border);
+  padding-left: 0.75rem;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .tagline {
+    display: block;
+  }
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+  .nav-link {
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+}
+
+/* Mobile Navigation */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.mobile-nav-link {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  padding: 1rem 0;
+}
+
+.nav-toggle {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1002;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none;
+    pointer-events: none;
+  }
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(80px + var(--section-padding));
+  padding-bottom: var(--section-padding);
+}
+
+.hero-grid {
+  display: grid;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hero-content h1 {
+  margin-bottom: var(--space-6);
+}
+
+.hero-content p {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-8);
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  background: var(--color-surface);
+  padding: var(--space-4);
+}
+
+.hero-image-wrapper img {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Welcome & Contact Section */
+.welcome-section {
+  position: relative;
+  z-index: 1;
+  padding: var(--section-padding) 0;
+  background: var(--color-surface);
+}
+
+.welcome-grid {
+  display: grid;
+  gap: var(--space-12);
+}
+
+@media (min-width: 1024px) {
+  .welcome-grid {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+  }
+}
+
+.welcome-text h2 {
+  font-size: var(--text-2xl); /* Reduced to prevent clipping and fix hierarchy */
+  margin-bottom: var(--space-6);
+  display: block;
+}
+
+.contact-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-8);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-card h3 {
+  margin-bottom: var(--space-6);
+  font-size: var(--text-lg);
+  border-bottom: 2px solid var(--color-bg);
+  padding-bottom: var(--space-2);
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.contact-item i {
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+.contact-item a:hover {
+  color: var(--color-accent);
+}
+
+.hours-list {
+  color: var(--color-text-muted);
+}
+
+/* Emergency Banner */
+.emergency-banner {
+  position: relative;
+  z-index: 1;
+  background: var(--color-accent);
+  color: white;
+  padding: var(--section-padding) 0;
+  text-align: center;
+}
+
+.emergency-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.emergency-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .emergency-number {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.emergency-icon {
+  width: 64px;
+  height: 64px;
+  background: white;
+  border-radius: 50%;
+  padding: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.emergency-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .emergency-text-group {
+    align-items: flex-start;
+  }
+}
+
+.emergency-label {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.emergency-link {
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.emergency-banner p {
+  color: rgba(255,255,255,0.9);
+  font-size: var(--text-lg);
+}
+
+/* Footer */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  background: var(--color-footer-bg);
+  color: white;
+  /* Increased bottom padding to ensure cookie banner doesn't cover content */
+  padding: clamp(4rem, 8vw, 7rem) 0 8rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer-brand .logo {
+  color: white;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.footer-brand p {
+  color: #9CA3AF;
+}
+
+.footer-heading {
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+  color: white;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-links a, .footer-links button {
+  color: #9CA3AF;
+  text-align: left;
+  font-size: var(--text-sm);
+}
+
+.footer-links a:hover, .footer-links button:hover {
+  color: white;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--space-6);
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #6B7280;
+  font-size: var(--text-xs);
+  margin: 0;
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-max);
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background: var(--color-surface);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  padding: var(--space-8);
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.is-open .modal-card {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: var(--color-text-muted);
+  padding: 0.25rem;
+}
+
+.modal-close:hover {
+  color: var(--color-text);
+}
+
+.modal-title {
+  margin-bottom: var(--space-4);
+  padding-right: var(--space-8);
+}
+
+.demo-links {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.demo-links a {
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* Cookie Banner */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-4);
+  z-index: var(--z-toast);
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+}
+
+.cookie-banner.is-visible {
+  transform: translateY(0);
+}
+
+.cookie-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .cookie-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.cookie-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+</style>
+</head>
+<body>
+<!-- DEMO NOTICE BANNER - benedictjaros.com -->
+<style>
+#__demo_spacer{display:block;}
+#__demo_notice,#__demo_notice *{box-sizing:border-box;margin:0;padding:0;}
+#__demo_notice{
+  position:fixed;top:0;left:0;right:0;z-index:99999;
+  background:rgba(9,9,11,.97);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+#__demo_inner{
+  max-width:1280px;margin:0 auto;
+  padding:0 44px 0 18px;min-height:38px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+#__demo_dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;background:#f5c842;box-shadow:0 0 7px rgba(245,200,66,.55);}
+#__demo_label{color:#f5c842;font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;}
+#__demo_divider{color:rgba(255,255,255,.15);font-size:12px;flex-shrink:0;}
+#__demo_text{color:rgba(255,255,255,.45);font-size:11.5px;line-height:1.45;flex:1 1 160px;}
+#__demo_links{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+#__demo_links a{
+  color:rgba(255,255,255,.38);font-size:11px;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  transition:color .15s,border-color .15s;white-space:nowrap;
+}
+#__demo_links a:hover{color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.4);}
+#__demo_link_sep{color:rgba(255,255,255,.15);font-size:10px;}
+#__demo_close{
+  position:absolute;right:0;top:0;bottom:0;width:40px;
+  background:none;border:none;cursor:pointer;
+  color:rgba(255,255,255,.28);font-size:16px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:color .15s;
+}
+#__demo_close:hover{color:rgba(255,255,255,.7);}
+@media(max-width:560px){
+  #__demo_inner{padding:7px 44px 7px 14px;gap:6px;}
+  #__demo_text{font-size:11px;flex:1 1 100%;order:3;}
+  #__demo_dot,#__demo_label{order:1;}
+  #__demo_divider{order:2;}
+  #__demo_links{order:4;}
+}
+</style>
+<div id="__demo_spacer"></div>
+<div id="__demo_notice" role="banner" aria-label="Demo notice">
+  <div id="__demo_inner">
+    <span id="__demo_dot"></span>
+    <span id="__demo_label">Demo</span>
+    <span id="__demo_divider">/</span>
+    <span id="__demo_text">Unofficial remake &mdash; not the real website. All content &amp; trademarks belong to their owners.</span>
+    <div id="__demo_links">
+      <a href="https://benedictjaros.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a>
+      <span id="__demo_link_sep">&middot;</span>
+      <a href="https://benedictjaros.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </div>
+  </div>
+  <button id="__demo_close" aria-label="Close demo notice">&#x2715;</button>
+</div>
+<script>
+(function () {
+  var spacer = document.getElementById('__demo_spacer');
+  var b = document.getElementById('__demo_notice');
+  var x = document.getElementById('__demo_close');
+  if (!b || !spacer) return;
+  function sync() { spacer.style.height = b.offsetHeight + 'px'; }
+  function hide() {
+    b.style.display = 'none'; spacer.style.height = '0';
+    try { sessionStorage.setItem('__demo_closed', '1'); } catch (e) {}
+  }
+  try { if (sessionStorage.getItem('__demo_closed')) { b.style.display = 'none'; spacer.style.height = '0'; return; } } catch (e) {}
+  sync();
+  window.addEventListener('resize', function () { if (b.style.display !== 'none') sync(); });
+  if (x) x.addEventListener('click', hide);
+}());
+</script>
+
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand-group">
+      <a href="#" class="logo">Etzer</a>
+      <span class="tagline">Gas Wasser Heizung</span>
+    </div>
+    
+    <nav class="desktop-nav">
+      <a href="#" class="nav-link">Home</a>
+      <button class="nav-link" data-modal="placeholder" data-title="Eigenanlage">Eigenanlage</button>
+      <a href="#kontakt" class="nav-link">Kontakt</a>
+      <a href="tel:066475016444" class="btn btn--emergency icon-text">
+        <i data-lucide="phone"></i> Notruf
+      </a>
+    </nav>
+
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-overlay">
+  <nav class="mobile-nav-list">
+    <a href="#" class="mobile-nav-link">Home</a>
+    <button class="mobile-nav-link" data-modal="placeholder" data-title="Eigenanlage">Eigenanlage</button>
+    <a href="#kontakt" class="mobile-nav-link">Kontakt</a>
+    <a href="tel:066475016444" class="btn btn--emergency icon-text" style="margin-top: 1rem;">
+      <i data-lucide="phone"></i> Notruf
+    </a>
+  </nav>
+</div>
+
+<main id="main">
+  
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <h1>Top Service vom Fachmann</h1>
+        <p>Seit 45 Jahren wird die Firma Etzer in Saalfelden nun schon als erfolgreiches Familienunternehmen geführt. Wir stehen für Zuverlässigkeit, Qualität und schnelle Hilfe, wenn Sie sie am meisten brauchen.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn btn--primary">Kontakt aufnehmen</a>
+          <button class="btn btn--outline" data-modal="placeholder" data-title="Termin anfragen">Termin anfragen</button>
+        </div>
+      </div>
+      <div class="hero-image-wrapper reveal" style="--i:1">
+        <img src="http://www.etzer.net/files/images/banner.png" alt="Etzer Team bei der Arbeit" width="800" height="600" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <section class="welcome-section">
+    <div class="container welcome-grid">
+      <div class="welcome-text reveal">
+        <h2>Willkommen</h2>
+        <p>Zu unseren Einsatzgebieten gehören natürlich Installationen jeder Art und Weise. Ob Heizung, Sanitär oder Lüftung – wir sind Ihr kompetenter Ansprechpartner in der Region.</p>
+        <p>Wir legen großen Wert auf persönliche Beratung und maßgeschneiderte Lösungen für Ihr Zuhause. Unser erfahrenes Team bildet sich ständig weiter, um Ihnen die modernste Technik bieten zu können.</p>
+        <p>Wir freuen uns auf Ihre Kontaktaufnahme und auf eine mögliche zukünftige Zusammenarbeit!<br><br><strong>Ihr Norbert Etzer und sein Team</strong></p>
+      </div>
+
+      <div class="contact-card reveal" style="--i:1" id="kontakt">
+        <h3>Kontakt</h3>
+        <div class="contact-list">
+          <div class="contact-item">
+            <i data-lucide="user"></i>
+            <span>Norbert Etzer</span>
+          </div>
+          <div class="contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Achenweg 8<br>5760 Saalfelden</span>
+          </div>
+          <div class="contact-item">
+            <i data-lucide="phone"></i>
+            <a href="tel:0658272372">Tel: 06582 / 72372</a>
+          </div>
+          <div class="contact-item">
+            <i data-lucide="printer"></i>
+            <span>Fax: 06582 / 72372-4</span>
+          </div>
+          <div class="contact-item">
+            <i data-lucide="mail"></i>
+            <a href="mailto:info@etzer.net">info@etzer.net</a>
+          </div>
+        </div>
+
+        <h3>Öffnungszeiten</h3>
+        <ul class="hours-list">
+          <li>Mo - Fr : 07:00 - 18:00 Uhr</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="emergency-banner reveal">
+    <div class="container emergency-content">
+      <div class="emergency-number">
+        <img src="http://www.etzer.net/files/images/phone.png" alt="" class="emergency-icon" aria-hidden="true">
+        <div class="emergency-text-group">
+          <span class="emergency-label">SERVICE HOTLINE</span>
+          <a href="tel:066475016444" class="emergency-link">0664 75 01 64 44</a>
+        </div>
+      </div>
+      <p>Auch bei Notfällen lassen wir Sie nicht im Regen stehen. Rufen Sie uns an – wir sind schnellstmöglich für Sie da.</p>
+      <a href="tel:066475016444" class="btn" style="background: white; color: var(--color-highlight);">Jetzt anrufen</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Etzer</span>
+        <p>Top Service vom Fachmann. Ihr verlässlicher Partner für Installationen in Saalfelden seit 45 Jahren.</p>
+      </div>
+      
+      <div>
+        <h4 class="footer-heading">Kontakt</h4>
+        <div class="footer-links">
+          <span class="icon-text"><i data-lucide="map-pin" style="width:16px;"></i> Achenweg 8, 5760 Saalfelden</span>
+          <a href="tel:0658272372" class="icon-text"><i data-lucide="phone" style="width:16px;"></i> 06582 / 72372</a>
+          <a href="mailto:info@etzer.net" class="icon-text"><i data-lucide="mail" style="width:16px;"></i> info@etzer.net</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Rechtliches</h4>
+        <div class="footer-links">
+          <button data-modal="demo">Impressum</button>
+          <button data-modal="demo">Datenschutz</button>
+          <button data-modal="placeholder" data-title="Sitemap">Sitemap</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Etzer — All original content, images & trademarks are property of their respective owners. Website rebuilt by Benedict Jaros.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Modals -->
+<div id="modal-placeholder" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-placeholder-title">
+  <div class="modal-card">
+    <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+    <h3 id="modal-placeholder-title" class="modal-title">Feature</h3>
+    <p>This feature will be live once the website is launched and configured. Contact us in the meantime — we'd love to hear from you.</p>
+  </div>
+</div>
+
+<div id="modal-demo" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-demo-title">
+  <div class="modal-card">
+    <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+    <h3 id="modal-demo-title" class="modal-title">Rechtliche Hinweise</h3>
+    <p>Diese Website ist ein Demo-Remake und wurde nicht von oder für das Unternehmen erstellt. Die Inhalte dienen ausschließlich Demonstrationszwecken. Für unsere eigenen rechtlichen Informationen:</p>
+    <div class="demo-links">
+      <a href="https://benedictjaros.com/impressum" target="_blank">Impressum</a>
+      <a href="https://benedictjaros.com/datenschutz" target="_blank">Datenschutz</a>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookie-banner">
+  <div class="cookie-content">
+    <p class="cookie-text">Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern. Durch die weitere Nutzung stimmen Sie der Verwendung zu.</p>
+    <div class="cookie-actions">
+      <button class="btn btn--outline" id="cookie-decline" style="padding: 0.5rem 1rem; font-size: var(--text-sm);">Ablehnen</button>
+      <button class="btn btn--primary" id="cookie-accept" style="padding: 0.5rem 1rem; font-size: var(--text-sm);">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Initialize Icons
+  lucide.createIcons();
+
+  // Mobile Navigation Toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const mobileOverlay = document.querySelector('.mobile-overlay');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function toggleMenu() {
+    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', !isExpanded);
+    mobileOverlay.classList.toggle('is-open');
+    document.body.style.overflow = isExpanded ? '' : 'hidden';
+  }
+
+  navToggle.addEventListener('click', toggleMenu);
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileOverlay.classList.contains('is-open')) toggleMenu();
+    });
+  });
+
+  // Scroll Reveal
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: "0px 0px 50px 0px" });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // Modals Logic
+  const modals = {
+    placeholder: document.getElementById('modal-placeholder'),
+    demo: document.getElementById('modal-demo')
+  };
+
+  function openModal(modalId, title) {
+    const modal = modals[modalId];
+    if (!modal) return;
+    
+    if (title && modalId === 'placeholder') {
+      modal.querySelector('.modal-title').textContent = title;
+    }
+    
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModals() {
+    Object.values(modals).forEach(modal => modal.classList.remove('is-open'));
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-modal]');
+    if (trigger) {
+      e.preventDefault();
+      openModal(trigger.dataset.modal, trigger.dataset.title);
+    }
+
+    if (e.target.closest('.modal-close') || e.target.classList.contains('modal-overlay')) {
+      closeModals();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModals();
+      if (mobileOverlay.classList.contains('is-open')) toggleMenu();
+    }
+  });
+
+  // Cookie Banner Logic
+  const cookieBanner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+
+  if (!localStorage.getItem('cookie_consent')) {
+    setTimeout(() => {
+      cookieBanner.classList.add('is-visible');
+    }, 1000);
+  }
+
+  function handleCookieChoice(choice) {
+    localStorage.setItem('cookie_consent', choice);
+    cookieBanner.classList.remove('is-visible');
+  }
+
+  acceptBtn.addEventListener('click', () => handleCookieChoice('accepted'));
+  declineBtn.addEventListener('click', () => handleCookieChoice('declined'));
+
+</script>
+</body>
+</html>
